@@ -1,6 +1,6 @@
 #!/bin/bash
-mqtt_host="${MQTT_HOST:-192.168.0.100}"
-mqtt_topic="${MQTT_TOPIC:-beem/status}"
+mqtt_host="${MQTT_HOST}"
+mqtt_topic="${MQTT_TOPIC}"
 
 token=`curl https://api-x.beem.energy/beemapp/user/login -X POST -H "Content-Type: application/json" --data-raw "{\"email\":\"${LOGIN}\",\"password\":\"${PASSWORD}\"}" | jq .accessToken`
 
