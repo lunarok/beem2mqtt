@@ -9,7 +9,7 @@ month=$(date +%m)
 data='{"month":'${month//0}',"year":'${year}'}'
 auth='authorization: Bearer '"${token//\"}"
 
-result=`curl https://api-x.beem.energy/beemapp/box/summary -X POST -H "Content-Type: application/json" -H "${auth}" --data-raw "${data}" | tr -d []`
+result=`curl https://api-x.beem.energy/beemapp/box/summary -X POST -H "Content-Type: application/json" -H "${auth}" --data-raw "${data}" | tr -d [ | tr -d ]`
 
 echo $result
 
