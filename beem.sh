@@ -17,8 +17,8 @@ mosquitto_pub -r -h $mqtt_host -t homeassistant/sensor/beem/totalMonth/config -m
 mosquitto_pub -r -h $mqtt_host -t homeassistant/sensor/beem/wattHour/config -m '{"name": "wattHour", "state_class": "total_increasing", "device_class": "energy", "unit_of_measurement": "Wh", "state_topic": "'${mqtt_topic}'", "value_template": "{{ value_json.wattHour }}", "unique_id": "mqtt.beem.wattHour", "device": {"model": "Beem", "identifiers": ["mqtt-beem"], "name": "Beem", "manufacturer": "Beem"}}'
 mosquitto_pub -r -h $mqtt_host -t homeassistant/sensor/beem/totalDay/config -m '{"name": "totalDay", "state_class": "total_increasing", "device_class": "energy", "unit_of_measurement": "Wh", "state_topic": "'${mqtt_topic}'", "value_template": "{{ value_json.totalDay }}", "unique_id": "mqtt.beem.totalDay", "device": {"model": "Beem", "identifiers": ["mqtt-beem"], "name": "Beem", "manufacturer": "Beem"}}'
 
-totalDay=`echo "${result}" | jq .[0].totalDay`
-totalMonth=`echo "${result}" | jq .[0].totalMonth`
-wattHour=`echo "${result}" | jq .[0].wattHour`
+totalDay=`echo "${result}" | jq .totalDay`
+totalMonth=`echo "${result}" | jq .totalMonth`
+wattHour=`echo "${result}" | jq .wattHour`
 
 mosquitto_pub -r -h $mqtt_host -t $mqtt_topic -m '{"totalDay": '${totalDay}', "totalMonth": '${totalMonth}', "wattHour": '${wattHour}'}'
