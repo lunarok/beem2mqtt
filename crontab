@@ -1,11 +1,2 @@
-@reboot root /scripts/reboot.sh
-0 * * * * root /scripts/angers_maine.sh
-0 * * * * root /scripts/angers_aqi.sh
-0 * * * * root /scripts/nextcloud.sh
-0 * * * * root /scripts/ecowatt.sh
-0 */4 * * * root /scripts/angers_poubelles.sh
-0 */4 * * * root /scripts/angers_pollen.sh
-0 */4 * * * root /scripts/sentinelle.sh
-0 */4 * * * root /scripts/edf.sh
-*/15 * * * * root /scripts/beem.sh
-0 12 1 */3 * root mosquitto_pub -r -h mqtt_host -t general/alerts -m "Message Exemple"
+0 * * * * root bash /beem.sh
+@reboot root bash /beem.sh
